@@ -352,7 +352,7 @@ min-width: 200px;
 /* call1 받아오는 히든페이지 */
 iframe{
     height:400px;
-    width:400px;
+    width:100px;
     border:0;
     border:none;
     /* visibility:hidden; */

@@ -29,13 +29,10 @@ if ($_SESSION['theme'] != null) {
 <body>
 
     <?php
-    //혹시 세션값을 잃어버렸을 때 1호기로 설정 -- 안전장치
-    if ($_SESSION['num'] == null) {
-        $_SESSION['num'] = 1;
-    }
+    //세션이 바뀌면 id 값이 바뀌므로 세션 이용하지 않고 고정숫자로 사용
 
     //call1 값 조회
-    echo $sql = "select * from controll1 where id='" . $_SESSION['num'] . "'";
+    echo $sql = "select * from controll1 where id='2'";
     $res = mysqli_query($conn, $sql);
     $row = mysqli_fetch_array($res);
 
@@ -44,22 +41,22 @@ if ($_SESSION['theme'] != null) {
         echo "
             <script>
             window.parent.location.reload();
-            window.parent.location.href='/page/foolproof.html?num=" . $_SESSION['num'] . "';
+            window.parent.location.href='/page/foolproof.html?num=2';
             </script>
             ";
 
         // 0으로 되돌리기
-        $sql = "update controll1 set call1 = '0' where id='" . $_SESSION['num'] . "'";
+        $sql = "update controll1 set call1 = '0' where id='2'";
         $res = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($res);
     }
     ?>
     <script>
-    function timeRefresh(timeoutPeriod) {
-        setTimeout("location.reload(true);", timeoutPeriod);
-    }
+        function timeRefresh(timeoutPeriod) {
+            setTimeout("location.reload(true);", timeoutPeriod);
+        }
 
-    window.onload = timeRefresh(100);
+        window.onload = timeRefresh(100);
     </script>
 </body>
 
