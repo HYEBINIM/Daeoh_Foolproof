@@ -1,3 +1,4 @@
+
 :root{
     --primary-color : #3867D6;
     --panel-color : #F0F3F5;
@@ -158,63 +159,3 @@ margin: 10px 0px;
 margin-left: 18px;
 }
 
-.main_content table{
-    width: calc(100% - 36px);
-    height: calc(100% - 20px - 1.2rem - 20px); /* .title 상하 마진값, .title 크기값, 테이블 하단 마진값 빼줌*/
-    margin: 0px 18px;
-    font-size: 0.875rem;
-    table-layout: fixed;
-
-}
-
-.main_content table th{
-    height: 30px;
-    border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
-    color: var(--text-color);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.main_content table td{
-    border-top: 1px solid var(--icon-color);
-    border-bottom: 1px solid var(--icon-color);
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.main_content table .td_value{
-    display: flex;
-    flex-direction: row;
-    align-items: center; /*수직 가운데 정렬*/
-    justify-content: center;  
-}
-
-/* 호기 값마다의 상태를 총합한 가장 왼쪽에 위치한 상태 */
-.status_all{
-    width: 80px;
-    height: 25px;
-    background-color: var(--green-color);
-    border-radius: 6px;
-}
-
-/* 호기 값마다의 상태 */
-.status{
-    width: 20px;
-    height: 20px;
-    background-color: var(--green-color);
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.btn_link{
-background-color: var(--primary-color);
-color: #F0F3F5;
-width: 80px;
-height: 25px;
-border-radius: 6px;
-line-height: 25px;
-}

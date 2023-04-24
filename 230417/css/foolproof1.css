@@ -238,6 +238,68 @@ min-width: 200px;
     font-size: 1.5rem;
 }
 
+/* 테마 변경 */
+#change_theme{
+    position: fixed;
+    top: -999px;
+    left: 25%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    transition: all 0.3s;
+    width: 50%;
+    height: 85%;
+    background-color: var(--panel-color);
+    border-radius: 18px;
+    z-index: 999;
+}
+
+#change_theme.active{
+    position: fixed;
+    top: 50%;
+    left: 25%;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+    z-index: 999;
+
+}
+
+.title_change_theme{
+    width: 100%;
+    height: 8vh;
+    font-size: 1.7rem;
+    padding: 2.2vh;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.box_change_theme{
+    width: 100%;
+    height: calc(100% - 8vh);
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.btn_change_theme{
+    background: var(--primary-color);
+    border-radius: 6px;
+    width: 20%;
+    height: 10%;
+    margin: 3px;
+}
+
+.btn_text_change_theme{
+    color: var(--white-color);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
 /* 분해능 설정 */
 #set{
     position: fixed;
@@ -338,9 +400,13 @@ min-width: 200px;
 
 /* call1 받아오는 히든페이지 */
 iframe{
-width: 1px;
-height: 1px;
+    height:400px;
+    width:400px;
+    border:0;
+    border:none;
+    /* visibility:hidden; */
 }
+
 
 /* 메인 콘텐츠 */
 .main_content{
@@ -368,7 +434,7 @@ height: 1px;
 
 /* 제목 */
 .main_content .top_section .top_item .top_th{
-font-size: 2rem;
+font-size: 2.3rem;
 font-family: SCDream7;
 font-weight: 600;
 color: var(--primary-color);
@@ -377,7 +443,7 @@ margin-left: 18px;
 
 /* 제목 */
 .main_content .top_section .top_item .top_td{
-    font-size: 2rem;
+    font-size: 2.3rem;
     font-family: SCDream7;
     font-weight: 800;
     color: var(--text-color);
@@ -393,6 +459,20 @@ margin-left: 18px;
 }
 
 #show_change_mc .icon_menu{
+    width: 100%;
+    height: 100%;
+}
+
+/* 테마변경 */
+#show_change_theme{
+    background-color: var(--white-color);
+    width: 35px;
+    height: 35px;
+    border: none;
+    margin-left: 10px;
+}
+
+#show_change_theme .icon_menu{
     width: 100%;
     height: 100%;
 }
@@ -420,7 +500,7 @@ margin-left: 18px;
 
 /* 시계 */
 .clock{
-    font-size: 1.4rem;
+    font-size: 2rem;
     color: var(--text-color);
 }
 
@@ -443,7 +523,7 @@ table th{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-family: SCDream7;
 }
 
@@ -469,37 +549,53 @@ canvas{
     height: auto;
 }
 
-.text{
+.box_text{
     position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.box_text1{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #ccc;
+}
+
+.box_text2{
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+.box_text2{
+    color: var(--text-color);
+}
+
+.box_text3{
+color: var(--text-color);
+}
+
+.box_text4{
+color: var(--text-color);
+}
+
 .text1{
-    font-size: 3rem;
+    font-size: 4rem;
     color: var(--primary-color);
 }
 
-.text2{
-    font-size: 2rem;
+/* .text1{
+    font-size: 4rem;
     color: var(--text-color);
     text-align: center;
-}
+} */
 
-.dr{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    background-color: #F03434;
-}
-
-.text3{
+/* .text2{
     position: absolute;
-    top: -50px;
-    left: 20px;
-    width: 50px;
+    top: 100px;
+    left: 120px;
+    width: 40px;
     height: 40px;
     background: #ccc;
     color: var(--text-color);
@@ -507,14 +603,14 @@ canvas{
     display:flex;
     justify-content:center;
     align-items: center;
-    border-radius: 50% 50% 0 0;
+    border-radius: 50%;
 }
 
 .text4{
     position: absolute;
-    top: -50px;
-    right: 20px;
-    width: 50px;
+    top: 100px;
+    right: 120px;
+    width: 40px;
     height: 40px;
     background: #ccc;
     color: var(--text-color);
@@ -522,5 +618,5 @@ canvas{
     display:flex;
     justify-content:center;
     align-items: center;
-    border-radius: 50% 50% 0 0;
-}
+    border-radius: 50%;
+} */

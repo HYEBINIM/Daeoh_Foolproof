@@ -1,0 +1,95 @@
+<!-- 
+프로젝트 : 사출기 통합 현황 풀프루프
+시작일자 : 2023-03-28
+제작자 : 임혜빈
+코멘트 : 
+-->
+
+<?php
+$conn = new mysqli("localhost", "server", "00000000", "dataset");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAST</title>
+    <link rel="stylesheet" href="/css/month.css">
+</head>
+
+<body>
+    <!-- 전체 판넬 -->
+    <div class="wrapper">
+
+        <!-- 상단바 -->
+        <div class="top_bar">
+            <div class="logo">
+                <a class='logo_item' href="/index.html">EAST</a>
+            </div>
+            <div class="menu">
+                <a class='menu_item' href="/index.html">메인 화면</a>
+                <a class='menu_item' href="/page/year.html">연간 통계</a>
+                <a class='menu_item active' href="/page/month.html">월별 통계</a>
+                <a class='menu_item' href="/page/day.html">일별 통계</a>
+                <a class='menu_item' href="/page/time.html">시간별 통계</a>
+                <a class='menu_item' href="/page/set1.html">기준 설정</a>
+                <a class='menu_item' href="/page/set2.html">분해능 설정</a>
+                <a class='menu_item' href="/page/theme.html">테마 설정</a>
+                <a class='menu_item ' href="/page/foolproof.html?num=<?php echo $_SESSION['num']; ?>">풀프루프</a>
+            </div>
+        </div>
+        <!-- /상단바 -->
+
+        <!-- 메인 판넬 -->
+        <div class="main_panel">
+            <!-- 메인 콘텐츠 -->
+            <div class="main_content">
+                <!-- 상단 파란선 -->
+                <div class="line"></div>
+                <p class="title">FOOL PROOF</p>
+
+                <table width=1900px style="text-align: center;">
+                    <thead>
+                        <form method="post" action="/action/mothlyNG_graph.php" target="i_003">
+                            <tr>
+                                <th class="alert-primary text-dark border border-secondary" colspan="6" height="30px" align="center">월별 유형별 불량 집계</th>
+                                <th rowspan="2" width="10%"><input type="submit" id="submit" class="btn btn-secondary" style="margin-top:5px;" value="조회하기"></th>
+                            </tr>
+                            <tr>
+                                <th class="alert-secondary border border-secondary" width="150px" height="25px">호기 구분</th>
+                                <th width="150px"><label for="machineNo"></label>
+                                    <select id="machineNo">
+                                        <option value="1호기" selected>검사1호기</option>
+                                    </select>
+                                </th>
+                                <th class="alert-secondary border border-secondary" width="170px">품목 구분</th>
+                                <th width="220px"><select name="item_no" id="search">
+                                        <option value="0">0) 아이템1</option>
+                                        <option value="1">1) 아이템2</option>
+                                        <option value="2">2) 아이템3</option>
+                                        <option value="3">3) 아이템4</option>
+                                </th>
+                                <th width="150px" class="alert-secondary border border-secondary">년도</th>
+                                <th width="160px" class="border border-secondary">20<input type="text" maxlength="2" size="4" name="date_count" value="<?php echo date('y'); ?>">년</th>
+                            </tr>
+                    </thead>
+                </table>
+                <iframe frameborder="0" name="i_003" style="width: 1910px; height: 750px; position:absolute;" src="/action/mothlyNG_graph.php" target="i_003">
+                </iframe>
+                <script>
+                    document.getElementById("submit").click();
+                </script>
+
+
+            </div>
+            <!-- /메인 콘텐츠 -->
+        </div>
+        <!-- /메인 판넬 -->
+
+    </div>
+    <!-- /전체 판넬 -->
+</body>
+
+</html>

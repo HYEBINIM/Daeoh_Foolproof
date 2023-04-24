@@ -6,7 +6,13 @@
 -->
 
 <?php
+session_start();
 $conn = new mysqli("localhost", "server", "00000000", "dataset");
+if ($_SESSION['theme'] != null) {
+    $_SESSION['theme'] = $_SESSION['theme'];
+} else {
+    $_SESSION['theme'] = "1";
+};
 ?>
 <!DOCTYPE html>
 <html lang="ko">
@@ -16,7 +22,7 @@ $conn = new mysqli("localhost", "server", "00000000", "dataset");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EAST</title>
-    <link rel="stylesheet" href="/css/set2.css">
+    <link rel="stylesheet" href="/css/set2_<?php echo $_SESSION['theme']; ?>.css">
 </head>
 
 <body>
@@ -30,13 +36,14 @@ $conn = new mysqli("localhost", "server", "00000000", "dataset");
             </div>
             <div class="menu">
                 <a class='menu_item' href="/index.html">메인 화면</a>
-                <a class='menu_item' href="/index.html">연간 통계</a>
-                <a class='menu_item' href="/index.html">월별 통계</a>
-                <a class='menu_item' href="/index.html">일별 통계</a>
-                <a class='menu_item' href="/index.html">시간별 통계</a>
+                <a class='menu_item' href="/page/year.html">연간 통계</a>
+                <a class='menu_item' href="/page/month.html">월별 통계</a>
+                <a class='menu_item' href="/page/day.html">일별 통계</a>
+                <a class='menu_item' href="/page/time.html">시간별 통계</a>
                 <a class='menu_item' href="/page/set1.html">기준 설정</a>
                 <a class='menu_item active' href="/page/set2.html">분해능 설정</a>
-                <a class='menu_item' href="/page/foolproof.html?num=1">풀프루프</a>
+                <a class='menu_item' href="/page/theme.html">테마 설정</a>
+                <a class='menu_item' href="/page/foolproof.html?num=<?php echo $_SESSION['num']; ?>">풀프루프</a>
             </div>
         </div>
         <!-- /상단바 -->
@@ -66,25 +73,25 @@ $conn = new mysqli("localhost", "server", "00000000", "dataset");
                                 <th>호퍼드라이건조</th>
                                 <th>작동유온도</th>
                             </tr>
-                            <?php                        
-                                for($count = 1; $count <= 19; $count++){
-                                    $sql01 = "select * from cr1 where id='".$count."'";
-                                    $res01 = mysqli_query($conn, $sql01);
-                                    $row01 = mysqli_fetch_array($res01);
-                                    echo "
+                            <?php
+                            for ($count = 1; $count <= 19; $count++) {
+                                $sql01 = "select * from cr1 where id='" . $count . "'";
+                                $res01 = mysqli_query($conn, $sql01);
+                                $row01 = mysqli_fetch_array($res01);
+                                echo "
                                     <tr>
-                                    <td>".$count."</td>
-                                    <td><input type='text' name='".$count."_1' value='".$row01['a0']."'></td>
-                                    <td><input type='text' name='".$count."_2' value='".$row01['a1']."'></td>
-                                    <td><input type='text' name='".$count."_3' value='".$row01['a2']."'></td>
-                                    <td><input type='text' name='".$count."_4' value='".$row01['a3']."'></td>
-                                    <td><input type='text' name='".$count."_5' value='".$row01['a4']."'></td>
-                                    <td><input type='text' name='".$count."_6' value='".$row01['a5']."'></td>
-                                    <td><input type='text' name='".$count."_7' value='".$row01['a6']."'></td>
-                                    <td><input type='text' name='".$count."_8' value='".$row01['a7']."'></td>
+                                    <td>" . $count . "</td>
+                                    <td><input type='text' name='" . $count . "_1' value='" . $row01['a0'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_2' value='" . $row01['a1'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_3' value='" . $row01['a2'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_4' value='" . $row01['a3'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_5' value='" . $row01['a4'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_6' value='" . $row01['a5'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_7' value='" . $row01['a6'] . "'></td>
+                                    <td><input type='text' name='" . $count . "_8' value='" . $row01['a7'] . "'></td>
                                     </tr>
                                     ";
-                                }
+                            }
                             ?>
                         </table>
                     </div>
