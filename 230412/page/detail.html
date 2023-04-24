@@ -1,0 +1,118 @@
+<!-- 
+프로젝트 : 사출기 통합 현황 풀프루프
+시작일자 : 2023-04-04
+제작자 : 임혜빈
+코멘트 : easy-pie-chart를 통해 쉬운 도넛차트를 그릴 수 있음
+-->
+
+<?php
+$conn = new mysqli("localhost", "server", "00000000", "dataset");
+?>
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EAST</title>
+    <link rel="stylesheet" href="/css/time.css">
+</head>
+</head>
+
+<body>
+    <!-- 전체 판넬 -->
+    <div class="wrapper">
+        <!-- 상단바 -->
+        <div class="top_bar">
+            <div class="logo">
+                <a class='logo_item' href="/index.html">EAST</a>
+            </div>
+            <div class="menu">
+                <a class='menu_item' href="/index.html">메인 화면</a>
+                <a class='menu_item' href="/index.html">연간 통계</a>
+                <a class='menu_item' href="/index.html">월별 통계</a>
+                <a class='menu_item' href="/index.html">일별 통계</a>
+                <a class='menu_item' href="/index.html">시간별 통계</a>
+                <a class='menu_item' href="/page/set1.html">기준 설정</a>
+                <a class='menu_item' href="/page/set2.html">분해능 설정</a>
+                <a class='menu_item active' href="/page/foolproof.html?num=1">풀프루프</a>
+            </div>
+        </div>
+        <!-- /상단바 -->
+
+        <!-- 메인 판넬 -->
+        <div class="main_panel">
+            <!-- 메인 콘텐츠 -->
+            <div class="content1">
+                <!-- 상단 파란선 -->
+                <div class="line"></div>
+                <p class="title">1호기</p>
+                <div class="chart" data-percent="73" data-scale-color="#3867D6">
+                    <div class="text">73%</div>
+                </div>
+                <div>고정금형</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>이동금형</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>냉각수IN</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>냉각수OUT</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>온수기IN</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>온수기OUT</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>호퍼드라이건조</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+                <div>작동유온도</div>
+                <div class="progress-bar">
+                    <div class="progress"> </div>
+                </div>
+            </div>
+            <!-- /메인 콘텐츠 -->
+            <!-- 메인 콘텐츠 -->
+            <div class="content2">
+                <!-- 상단 파란선 -->
+                <div class="line"></div>
+                <p class="title">시간별 통계</p>
+            </div>
+            <!-- /메인 콘텐츠 -->
+        </div>
+        <!-- /메인 판넬 -->
+
+    </div>
+    <!-- /전체 판넬 -->
+
+
+    <script src="/plugins/easy-pie-chart/dist/easypiechart.js"></script>
+    <script>
+    var element = document.querySelector('.chart');
+
+    new EasyPieChart(element, {
+        barColor: '#3867D6', //차트가 그려질 색
+        trackColor: '#ccc', // 차트가 그려지는 트랙의 기본 배경색(chart1 의 회색부분)
+        scaleColor: '#fff', // 차트 테두리에 그려지는 기준선 (chart2	의 테두리 선)
+        lineCap: 'butt', // 차트 선의 모양 chart1 butt / chart2 round / chart3 square
+        lineWidth: 15, // 차트 선의 두께
+        size: 300, // 차트크기
+        animate: 1000, // 그려지는 시간 
+    });
+    </script>
+</body>
+
+</html>

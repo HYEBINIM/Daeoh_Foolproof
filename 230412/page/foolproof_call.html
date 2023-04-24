@@ -1,0 +1,57 @@
+<!-- 
+프로젝트 : 사출기 통합 현황 풀프루프
+시작일자 : 2023-04-07
+제작자 : 임혜빈
+코멘트 :
+controll1 테이블 사용
+기존 테이블에서 id를 20개로 늘림 (id = 1 을 1~19까지 사용하는 방법도 있지만 동시에 호기가 사출할 경우 데이터 소실됨)
+-->
+<?php
+session_start();
+$conn = new mysqli("localhost", "server", "00000000", "dataset");
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="1; url=/page/foolproof_call.html" />
+    <title>Document</title>
+    <style>
+    * {
+        background: red;
+    }
+    </style>
+</head>
+
+<body>
+
+    <?php
+    //혹시 세션값을 잃어버렸을 때 1호기로 설정 -- 안전장치
+    if ($_SESSION['num'] == null) {
+        $_SESSION['num'] = 1;
+    }
+
+        echo $sql = "select * from controll1 where id='".$_SESSION['num']."'";
+        $res = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($res);
+
+        if($row['call1'] == '1'){
+            echo "
+            <script>
+            window.parent.location.reload();
+            window.parent.location.href='/page/foolproof.html?num=".$_SESSION['num']."';
+            </script>
+            ";
+
+            // 0으로 되돌리기
+            echo $sql = "update controll1 set call1 = '0' where id='".$_SESSION['num']."'";
+            $res = mysqli_query($conn, $sql);
+            $row = mysqli_fetch_array($res);
+        }
+    ?>
+</body>
+
+</html>
